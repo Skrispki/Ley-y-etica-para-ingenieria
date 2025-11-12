@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoSolidaria Market - Tienda Online</title>
+  <style>
+    :root {
+      --primary: #1e88e5;
+      --primary-soft: #e3f2fd;
+      --accent: #00c853;
+      --bg: #f5f7fb;
+      --text: #222;
+      --radius: 18px;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(14px);
+      background: rgba(245, 247, 251, 0.96);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    .logo span.icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 4px 10px rgba(0, 136, 255, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: 0.2s;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1.6fr);
+      gap: 26px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-text {
+      font-size: 0.97rem;
+      color: #4b5563;
+      margin-bottom: 16px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: #6b7280;
+      margin-bottom: 16px;
+    }
+
+    .hero-highlights span {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: white;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow);
+      transition: 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--primary-soft);
+      cursor: pointer;
+      font-size: 0.86rem;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-soft);
+    }
+
+    .hero-note {
+      font-size: 0.72rem;
+      color: #9ca3af;
+    }
+
+    .hero-card {
+      background: white;
+      padding: 16px 16px 14px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 8px;
+      font-size: 0.8rem;
+    }
+
+    .hero-card h3 {
+      font-size: 0.96rem;
+      margin-bottom: 2px;
+      color: #111827;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .stat {
+      flex: 1;
+      background: var(--primary-soft);
+      border-radius: 12px;
+      padding: 6px 8px;
+      display: grid;
+      gap: 2px;
+    }
+
+    .stat span.label {
+      font-size: 0.65rem;
+      color: #6b7280;
+    }
+
+    .stat span.value {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .hero-list {
+      list-style: none;
+      margin-top: 4px;
+    }
+
+    .hero-list li {
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: #6b7280;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    /* SECTIONS */
+    section {
+      margin-bottom: 32px;
+    }
+
+    h2.section-title {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: #111827;
+    }
+
+    p.section-desc {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    /* NOSOTROS */
+    .cols-2 {
+      display: grid;
+      grid-template-columns: 1.7fr 1.3fr;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .pill-list {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: #4b5563;
+    }
+
+    .pill-list li {
+      padding: 6px 9px;
+      background: #ffffff;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 10px rgba(148, 163, 253, 0.06);
+      width: fit-content;
+    }
+
+    .tag {
+      font-size: 0.64rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    /* TIENDA */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 10px;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+      display: grid;
+      gap: 6px;
+      font-size: 0.8rem;
+      position: relative;
+    }
+
+    .product-label {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.6rem;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .product-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #111827;
+    }
+
+    .product-origin {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .product-price {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .product-impact {
+      font-size: 0.7rem;
+      color: #9ca3af;
+    }
+
+    .btn-add-cart {
+      margin-top: 4px;
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      transition: 0.2s;
+    }
+
+    .btn-add-cart:hover {
+      opacity: 0.97;
+      transform: translateY(-1px);
+    }
+
+    /* CARRITO */
+    #carrito {
+      background: #ffffff;
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      font-size: 0.8rem;
+    }
+
+    #cart-items {
+      margin-top: 4px;
+      margin-bottom: 6px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 2fr 0.9fr 0.9fr 0.7fr;
+      gap: 6px;
+      align-items: center;
+      padding: 4px 6px;
+      border-radius: 10px;
+      background: var(--primary-soft);
+      font-size: 0.72rem;
+    }
+
+    .cart-item span.name {
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .cart-item span.small {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .cart-remove {
+      padding: 2px 6px;
+      font-size: 0.65rem;
+      border-radius: 999px;
+      border: none;
+      background: #fee2e2;
+      color: #b91c1c;
+      cursor: pointer;
+    }
+
+    .cart-summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin: 4px 0 8px;
+      font-size: 0.78rem;
+    }
+
+    .cart-summary strong {
+      font-size: 0.86rem;
+      color: #111827;
+    }
+
+    #checkout-form {
+      display: grid;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    #checkout-form label {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    #checkout-form input,
+    #checkout-form textarea,
+    #checkout-form select {
+      width: 100%;
+      padding: 6px 8px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.75rem;
+      outline: none;
+    }
+
+    #checkout-form textarea {
+      resize: vertical;
+      min-height: 40px;
+    }
+
+    #checkout-form button {
+      margin-top: 4px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(22, 163, 74, 0.35);
+      transition: 0.2s;
+    }
+
+    #checkout-form button:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .form-note {
+      font-size: 0.63rem;
+      color: #9ca3af;
+    }
+
+    /* IMPACTO */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      font-size: 0.75rem;
+    }
+
+    .impact-card {
+      background: #ffffff;
+      padding: 8px 9px;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 14px rgba(148, 163, 253, 0.08);
+    }
+
+    .impact-card strong {
+      font-size: 0.82rem;
+      color: var(--primary);
+    }
+
+    /* CONTACTO */
+    .contact-box {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 14px;
+      border-radius: var(--radius);
+      display: grid;
+      gap: 4px;
+      font-size: 0.78rem;
+    }
+
+    .contact-box strong {
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .contact-box span {
+      font-size: 0.75rem;
+    }
+
+    .contact-box a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px 22px;
+      font-size: 0.7rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .cols-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <span class="icon"></span>
+        <span>EcoSolidaria Market</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Quiénes somos</a>
+        <a href="#tienda">Tienda</a>
+        <a href="#impacto">Impacto</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="nav-cta" onclick="document.querySelector('#tienda').scrollIntoView({behavior:'smooth'})">
+        Ir a la tienda
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO / LANDING -->
+    <section id="inicio" class="hero">
+      <div>
+        <div class="hero-badge">
+          🌱 Comercio justo & economía solidaria
+        </div>
+        <h1 class="hero-title">
+          Conecta con <span>productores locales</span> a través de una tienda online transparente.
+        </h1>
+        <p class="hero-text">
+          EcoSolidaria Market es la plataforma digital de una organización de economía solidaria que reúne a productores
+          campesinos, asociaciones y cooperativas. Aquí cada compra apoya el desarrollo local, el medio ambiente y el comercio justo.
+        </p>
+        <div class="hero-highlights">
+          <span>✅ Pagos justos al productor</span>
+          <span>✅ Trazabilidad del producto</span>
+          <span>✅ Productos sostenibles</span>
+          <span>✅ Plataforma educativa para el consumidor</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.querySelector('#tienda').scrollIntoView({behavior:'smooth'})">
+            Ver productos ahora →
+          </button>
+          <button class="btn-outline" onclick="document.querySelector('#nosotros').scrollIntoView({behavior:'smooth'})">
+            Conocer la organización
+          </button>
+        </div>
+        <p class="hero-note">
+          *Este sitio es un prototipo académico de landing page + tienda online desarrollado por estudiantes.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <h3>Impacto directo con cada compra 💚</h3>
+        <p>
+          Al comprar en nuestra tienda apoyas proyectos rurales, empoderamiento de mujeres, jóvenes emprendedores y prácticas agrícolas responsables.
+        </p>
+        <div class="stat-row">
+          <div class="stat">
+            <span class="label">Productores vinculados</span>
+            <span class="value">+35 familias</span>
+          </div>
+          <div class="stat">
+            <span class="label">Compras con impacto</span>
+            <span class="value">+1200</span>
+          </div>
+        </div>
+        <ul class="hero-list">
+          <li><span class="dot"></span>Cooperativas de café, cacao, frutas y artesanías.</li>
+          <li><span class="dot"></span>Sin intermediarios especulativos, precios transparentes.</li>
+          <li><span class="dot"></span>Trazabilidad: sabes de dónde viene lo que consumes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros">
+      <h2 class="section-title">Quiénes somos</h2>
+      <p class="section-desc">
+        Somos una organización de economía solidaria que articula productores rurales y consumidores urbanos conscientes.
+        Promovemos el comercio justo, el desarrollo comunitario y la sostenibilidad ambiental a través de canales digitales.
+      </p>
+      <div class="cols-2">
+        <div>
+          <ul class="pill-list">
+            <li><span class="tag">Misión</span>Conectar directamente a productores organizados con consumidores responsables.</li>
+            <li><span class="tag">Visión</span>Ser la plataforma líder en comercio justo y economía solidaria en la región.</li>
+            <li><span class="tag">Valores</span>Equidad, transparencia, cooperación, sostenibilidad.</li>
+          </ul>
+        </div>
+        <div>
+          <p class="section-desc">
+            Este prototipo muestra cómo una landing page puede:
+          </p>
+          <ul class="pill-list">
+            <li>Explicar la propuesta de valor.</li>
+            <li>Mostrar productos con propósito social.</li>
+            <li>Incorporar un carrito de compras sencillo.</li>
+            <li>Facilitar el contacto y futuras pasarelas de pago.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIENDA ONLINE -->
+    <section id="tienda">
+        <h2 class="section-title">Tienda Online</h2>
+        <p class="section-desc">
+            Elige productos de economía solidaria, agrega al carrito y simula tu pedido. Cada producto indica su origen y el impacto
+            social de tu compra.
+        </p>
+
+        <!-- PRODUCTOS -->
+        <!-- REEMPLAZA el bloque de productos existente por este -->
+        <div class="product-grid">
+            <div class="product-card" data-id="1" data-name="Café campesino 500g" data-price="28000">
+                <span class="product-label">Cooperativa Andina</span>
+                <div class="product-title">Café campesino 500g</div>
+                <div class="product-origin">Origen: Nariño, Colombia</div>
+                <div class="product-price">$28.000</div>
+                <div class="product-impact">Apoya a 15 familias cafeteras en economía solidaria.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="2" data-name="Cacao orgánico 250g" data-price="22000">
+                <span class="product-label">Asociación Rural</span>
+                <div class="product-title">Cacao orgánico 250g</div>
+                <div class="product-origin">Origen: Meta, Colombia</div>
+                <div class="product-price">$22.000</div>
+                <div class="product-impact">Promueve la sustitución de cultivos ilícitos.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="3" data-name="Miel artesanal 300g" data-price="18000">
+                <span class="product-label">Red Apícola</span>
+                <div class="product-title">Miel artesanal 300g</div>
+                <div class="product-origin">Origen: Boyacá, Colombia</div>
+                <div class="product-price">$18.000</div>
+                <div class="product-impact">Protege polinizadores y apoya pequeños apicultores.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="4" data-name="Canasta campesina semanal" data-price="65000">
+                <span class="product-label">Economía Local</span>
+                <div class="product-title">Canasta campesina semanal</div>
+                <div class="product-origin">Frutas, verduras y tubérculos frescos</div>
+                <div class="product-price">$65.000</div>
+                <div class="product-impact">Conecta productores locales con hogares urbanos.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="5" data-name="Pan artesanal integral 500g" data-price="9000">
+                <span class="product-label">Panadería Solidaria</span>
+                <div class="product-title">Pan artesanal integral 500g</div>
+                <div class="product-origin">Elaborado con harinas orgánicas locales</div>
+                <div class="product-price">$9.000</div>
+                <div class="product-impact">Apoya a mujeres panaderas rurales.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="6" data-name="Queso campesino 250g" data-price="12000">
+                <span class="product-label">Asociación Lechera</span>
+                <div class="product-title">Queso campesino 250g</div>
+                <div class="product-origin">Origen: Cundinamarca, Colombia</div>
+                <div class="product-price">$12.000</div>
+                <div class="product-impact">Producido con leche de pequeños ganaderos.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="7" data-name="Aceite de coco artesanal 250ml" data-price="25000">
+                <span class="product-label">Coop. Caribe Verde</span>
+                <div class="product-title">Aceite de coco artesanal 250ml</div>
+                <div class="product-origin">Origen: San Andrés Islas</div>
+                <div class="product-price">$25.000</div>
+                <div class="product-impact">Favorece emprendimientos afrocolombianos sostenibles.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="8" data-name="Artesanía en fique (bolso)" data-price="38000">
+                <span class="product-label">Manos del Campo</span>
+                <div class="product-title">Artesanía en fique (bolso)</div>
+                <div class="product-origin">Hecho a mano por comunidades rurales</div>
+                <div class="product-price">$38.000</div>
+                <div class="product-impact">Promueve el arte local y el uso de fibras naturales.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="9" data-name="Chocolate artesanal de mesa 250g" data-price="15000">
+                <span class="product-label">CacaoSolidario</span>
+                <div class="product-title">Chocolate artesanal de mesa 250g</div>
+                <div class="product-origin">Origen: Huila, Colombia</div>
+                <div class="product-price">$15.000</div>
+                <div class="product-impact">Apoya asociaciones de productores de cacao orgánico.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="10" data-name="Yogur natural campesino 1L" data-price="13000">
+                <span class="product-label">Cooperativa Láctea</span>
+                <div class="product-title">Yogur natural campesino 1L</div>
+                <div class="product-origin">Origen: Santander, Colombia</div>
+                <div class="product-price">$13.000</div>
+                <div class="product-impact">Favorece la transformación local de productos lácteos.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="11" data-name="Jabón artesanal de miel y avena" data-price="8500">
+                <span class="product-label">EcoNatural</span>
+                <div class="product-title">Jabón artesanal de miel y avena</div>
+                <div class="product-origin">Hecho por emprendedoras rurales</div>
+                <div class="product-price">$8.500</div>
+                <div class="product-impact">Promueve el cuidado ambiental y la economía circular.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="12" data-name="Té de hierbas andinas 100g" data-price="16000">
+                <span class="product-label">Red Agroecológica</span>
+                <div class="product-title">Té de hierbas andinas 100g</div>
+                <div class="product-origin">Origen: Tolima, Colombia</div>
+                <div class="product-price">$16.000</div>
+                <div class="product-impact">Revaloriza saberes ancestrales y cultivos orgánicos.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card" data-id="1" data-name="Café campesino 500g" data-price="28000">
+                <span class="product-label">Cooperativa Andina</span>
+                <div class="product-title">Café campesino 500g</div>
+                <div class="product-origin">Origen: Nariño, Colombia</div>
+                <div class="product-price">$28.000</div>
+                <div class="product-impact">Apoya a 15 familias cafeteras en economía solidaria.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="2" data-name="Cacao orgánico 250g" data-price="22000">
+                <span class="product-label">Asociación Rural</span>
+                <div class="product-title">Cacao orgánico 250g</div>
+                <div class="product-origin">Origen: Meta, Colombia</div>
+                <div class="product-price">$22.000</div>
+                <div class="product-impact">Promueve la sustitución de cultivos ilícitos.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="3" data-name="Miel artesanal 300g" data-price="18000">
+                <span class="product-label">Red Apícola</span>
+                <div class="product-title">Miel artesanal 300g</div>
+                <div class="product-origin">Origen: Boyacá, Colombia</div>
+                <div class="product-price">$18.000</div>
+                <div class="product-impact">Protege polinizadores y apoya pequeños apicultores.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+
+            <div class="product-card" data-id="4" data-name="Canasta campesina semanal" data-price="65000">
+                <span class="product-label">Economía Local</span>
+                <div class="product-title">Canasta campesina semanal</div>
+                <div class="product-origin">Frutas, verduras y tubérculos frescos</div>
+                <div class="product-price">$65.000</div>
+                <div class="product-impact">Conecta productores locales con hogares urbanos.</div>
+                <button class="btn-add-cart">Agregar al carrito</button>
+            </div>
+        </div>
+
+        <!-- CARRITO -->
+        <section id="carrito">
+            <h3>Tu carrito de compras</h3>
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <div>
+                    <div><strong>Ítems:</strong> <span id="cart-count">0</span></div>
+                    <div><strong>Subtotal:</strong> <span id="cart-subtotal">$0</span></div>
+                </div>
+                <div>
+                    <div><strong>Total:</strong> <span id="cart-total">$0</span></div>
+                    <div class="form-note">*Precios en COP. Pedido simulado para fines académicos.</div>
+                </div>
+            </div>
+
+            <!-- CHECKOUT SIMULADO -->
+            <form id="checkout-form">
+                <label>
+                    Nombre completo
+                    <input type="text" id="name" placeholder="Tu nombre" required />
+                </label>
+                <label>
+                    Correo electrónico
+                    <input type="email" id="email" placeholder="tunombre@mail.com" required />
+                </label>
+                <label>
+                    Ciudad / Municipio
+                    <input type="text" id="city" placeholder="Ej: Bogotá, Medellín, Tunja" required />
+                </label>
+                <label>
+                    Método de entrega
+                    <select id="delivery" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="envio">Envío a domicilio</option>
+                        <option value="punto">Recoger en punto aliado</option>
+                    </select>
+                </label>
+                <label>
+                    Comentarios adicionales
+                    <textarea id="message" placeholder="Indica referencias de entrega o datos importantes (opcional)"></textarea>
+                </label>
+                <button type="submit">Confirmar pedido simulado</button>
+                <p class="form-note">
+                    Al enviar este formulario se genera un resumen de pedido (no hay cobro real ni pasarela de pago integrada).
+                </p>
+            </form>
+        </section>
+    </section>
+
+    <!-- IMPACTO -->
+    <section id="impacto">
+      <h2 class="section-title">Impacto social y ambiental</h2>
+      <p class="section-desc">
+        La landing page y la tienda online permiten visibilizar el impacto de la economía solidaria, fortaleciendo la relación
+        entre consumo responsable y desarrollo sostenible.
+      </p>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <strong>Productores empoderados</strong>
+          <p>El productor fija su precio, conoce su margen y participa en la gestión colectiva de la plataforma.</p>
+        </div>
+        <div class="impact-card">
+          <strong>Transparencia</strong>
+          <p>El consumidor ve quién produce, dónde y bajo qué condiciones, reduciendo la asimetría de información.</p>
+        </div>
+        <div class="impact-card">
+          <strong>Redes solidarias</strong>
+          <p>Las compras apoyan asociaciones, cooperativas y grupos comunitarios, no solo empresas individuales.</p>
+        </div>
+        <div class="impact-card">
+          <strong>Sostenibilidad</strong>
+          <p>Priorizamos productos locales, agroecológicos y de bajo impacto ambiental.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <h2 class="section-title">Contacto</h2>
+      <div class="contact-box">
+        <strong>¿Eres una organización de economía solidaria?</strong>
+        <span>Este prototipo muestra cómo podrías digitalizar tu oferta de productos y tu misión social.</span>
+        <span>Escribe a: <a href="mailto:info@ecosolidaria.org">info@ecosolidaria.org</a> (correo de ejemplo académico).</span>
+        <span>Ubicación de referencia: Bogotá, Colombia.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2025 EcoSolidaria Market — Prototipo Tienda Online.</div>
+    <div>Desarrollado por Jhoan Cañon para la materia Ley y Etica para Ingeniería.</div>
+  </footer>
+
+  <script>
+    const cart = [];
+
+    const currency = new Intl.NumberFormat("es-CO", {
+      style: "currency",
+      currency: "COP",
+      maximumFractionDigits: 0
+    });
+
+    function addToCart(id, name, price) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price, quantity: 1 });
+      }
+      renderCart();
+    }
+
+    function removeFromCart(id) {
+      const index = cart.findIndex(item => item.id === id);
+      if (index !== -1) {
+        cart.splice(index, 1);
+        renderCart();
+      }
+    }
+
+    function renderCart() {
+      const cartItemsEl = document.getElementById("cart-items");
+      const countEl = document.getElementById("cart-count");
+      const subtotalEl = document.getElementById("cart-subtotal");
+      const totalEl = document.getElementById("cart-total");
+
+      if (cart.length === 0) {
+        cartItemsEl.innerHTML = "<p>Tu carrito está vacío. Agrega productos desde la tienda.</p>";
+        countEl.textContent = "0";
+        subtotalEl.textContent = currency.format(0);
+        totalEl.textContent = currency.format(0);
+        return;
+      }
+
+      let html = "";
+      let subtotal = 0;
+      let count = 0;
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+        count += item.quantity;
+        html += `
+          <div class="cart-item">
+            <span class="name">${item.name}</span>
+            <span class="small">${item.quantity} x ${currency.format(item.price)}</span>
+            <span class="small">${currency.format(itemTotal)}</span>
+            <button class="cart-remove" onclick="removeFromCart('${item.id}')">Quitar</button>
+          </div>
+        `;
+      });
+
+      cartItemsEl.innerHTML = html;
+      countEl.textContent = count.toString();
+      subtotalEl.textContent = currency.format(subtotal);
+      totalEl.textContent = currency.format(subtotal); // sin impuestos ni envío en este prototipo
+    }
+
+    // Inicializar botones "Agregar al carrito"
+    document.querySelectorAll(".btn-add-cart").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".product-card");
+        const id = card.dataset.id;
+        const name = card.dataset.name;
+        const price = parseInt(card.dataset.price, 10);
+        addToCart(id, name, price);
+      });
+    });
+
+    // Manejar envío del pedido simulado
+    document.getElementById("checkout-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      if (cart.length === 0) {
+        alert("Tu carrito está vacío. Agrega al menos un producto antes de confirmar el pedido.");
+        return;
+      }
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const city = document.getElementById("city").value.trim();
+      const delivery = document.getElementById("delivery").value;
+      const message = document.getElementById("message").value.trim();
+
+      let resumen = "✅ Pedido simulado enviado.\n\n";
+      resumen += `Nombre: ${name}\nCorreo: ${email}\nCiudad: ${city}\nEntrega: ${delivery}\n\n`;
+      resumen += "Productos:\n";
+      cart.forEach(item => {
+        resumen += `- ${item.quantity} x ${item.name} (${currency.format(item.price)} c/u)\n`;
+      });
+
+      alert(resumen + (message ? `\nComentarios: ${message}` : ""));
+
+      // Reiniciar formulario y carrito para el prototipo
+      this.reset();
+      cart.length = 0;
+      renderCart();
+    });
+
+    // Render inicial del carrito vacío
+    renderCart();
+  </script>
+</body>
+</html>
